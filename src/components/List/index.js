@@ -4,7 +4,7 @@ import "./style.css";
 function List(props) {
   return (
     <section className={"list flex"}>
-      {props.items.map((item, idx) => (
+      {props.items.map((item, id) => (
          <ListIem
          handleDelete = {props.handleDelete}
          title={item.title}

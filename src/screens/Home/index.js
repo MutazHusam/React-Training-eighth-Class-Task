@@ -1,74 +1,66 @@
 import "./style.css";
 import InputBox from "../../components/InputBox";
 import List from "../../components/List";
-import { Component } from "react";
+import {useState} from "react";
 
-class Home extends Component {
-  state = {
-    value: "",
-    items: [
-      {
-        title: "Mutaz",
-        id: Math.random() * 1000,
-      },
-      {
-        title: "Yazn",
-        id: Math.random() * 1000,
-      },
-      {
-        title: "Moath",
-        id: Math.random() * 1000,
-      },
-      {
-        title: "Husam",
-        id: Math.random() * 1000,
-      },
-    ],
+const initialItems = [
+  {
+    title: "Mutaz",
+    id: Math.random() * 1000,
+  },
+  {
+    title: "Yazn",
+    id: Math.random() * 1000,
+  },
+  {
+    title: "Moath",
+    id: Math.random() * 1000,
+  },
+  {
+    title: "Husam",
+    id: Math.random() * 1000,
+  },
+];
+function Home() {
+  const [value, setValue] = useState("");
+
+  const [items, setItems] = useState(initialItems);
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
   };
 
-  handleChange = (e) => {
-    this.setState({
-      value: e.target.value,
-    });
-  };
-
-  handleAdd = () => {
-    this.setState({
-      items: [
+  const handleAdd = () => {
+    setItems([
+        ...items,
         {
-          title: this.state.value,
-          id: Math.random() * 20000,
-        },
-        ...this.state.items,
-      ],
-      value: ''
-    });
+            title: value,
+            id: Math.random() * 1000,
+        }
+    ]);
+
+    setValue('')
   };
 
-  handleDelete = (id) => {
-    console.log(id);
-    console.log("test");
-    this.setState({
-      items: this.state.items.filter((item) => item.id !== id),
-    });
+  const handleDelete = (id) => {
+    setItems(
+      items.filter((item) => item.id !== id),
+    );
   };
 
 
-  render() {
-    return (
+  return (
       <div className={"inner-container"}>
         <h1>To Do List App</h1>
         <InputBox
-          value={this.state.value}
-          handleChange={this.handleChange}
-          handleAdd={this.handleAdd}
+            value={value}
+            handleChange={handleChange}
+            handleAdd={handleAdd}
         />
-        <List items={this.state.items} handleDelete={this.handleDelete} />
-        
-      </div>
-      
-    );
-  }
-}
+        <List items={items} handleDelete={handleDelete} />
 
+      </div>
+
+  );
+}
 export default Home;

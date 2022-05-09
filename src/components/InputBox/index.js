@@ -5,7 +5,7 @@ function InputBox(props) {
   return (
     <div className={"flex input-box"}>
       <input
-        onChange={props.handleChange}
+        onChange={(e)=>props.handleChange(e)}
         value={props.value}
         type="text"
         placeholder={"Enter task"}
