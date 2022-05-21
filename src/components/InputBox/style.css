@@ -2,6 +2,8 @@
     justify-content: space-between;
     margin: 25px 0;
     width: 100%;
+    margin-top: 50px;
+
 }
 
 input {
@@ -12,4 +14,5 @@ input {
     padding: 0 25px;
     border-radius: 20px;
     outline: none;
+
 }

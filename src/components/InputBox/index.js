@@ -1,5 +1,9 @@
 import "./style.css";
 import Button from "../Button";
+import AddIcon from '@mui/icons-material/Add';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 function InputBox(props) {
   return (
@@ -16,11 +20,8 @@ function InputBox(props) {
         isWhite={true}
         onClick={props.handleAdd}
         id={"add"}
-        style={{
-          background: !props.value && "lightgray",
-        }}
       >
-        Add
+        <AddBoxIcon/>
       </Button>
     </div>
   );

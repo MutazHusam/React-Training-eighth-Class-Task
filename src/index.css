@@ -21,7 +21,9 @@ body {
   width: 100%;
   max-width: 1920px;
   min-height: 100vh;
-  background: linear-gradient(189.77deg, #7135d8 14.69%, #542acc 85.31%);
+  background: #c8d8e4;
+
+  /* background: linear-gradient(189.77deg, #7135d8 14.69%, #542acc 85.31%); */
 }
 
 .flex{

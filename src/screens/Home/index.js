@@ -1,7 +1,29 @@
-import "./style.css";
 import InputBox from "../../components/InputBox";
 import List from "../../components/List";
-import {useState} from "react";
+import { useState } from "react";
+import { InnerContainer } from "./styles";
+import { Title } from "../../globalStyles/styles";
+import axios from "axios";
+import NavBar from "../../components/NavBar";
+
+const baseApi = axios.create({
+  baseURL: "https://jsonplaceholder.typicode.com/todos",
+});
+
+const CRUDRequests = {
+  get: async (URL) => {
+    return await baseApi.get(URL);
+  },
+  delete: async (URL) => {
+    return await baseApi.get(URL);
+  },
+  post: async (URL) => {
+    return await baseApi.get(URL);
+  },
+  put: async (URL) => {
+    return await baseApi.get(URL);
+  },
+};
 
 const initialItems = [
   {
@@ -32,35 +54,32 @@ function Home() {
 
   const handleAdd = () => {
     setItems([
-        ...items,
-        {
-            title: value,
-            id: Math.random() * 1000,
-        }
+      {
+        title: value,
+        id: Math.random() * 1000,
+      },
+      ...items,
     ]);
 
-    setValue('')
+    setValue("");
   };
 
   const handleDelete = (id) => {
-    setItems(
-      items.filter((item) => item.id !== id),
-    );
+    setItems(items.filter((item) => item.id !== id));
   };
 
-
   return (
-      <div className={"inner-container"}>
-        <h1>To Do List App</h1>
+    <>
+      <NavBar></NavBar>
+      <InnerContainer>
         <InputBox
-            value={value}
-            handleChange={handleChange}
-            handleAdd={handleAdd}
+          value={value}
+          handleChange={handleChange}
+          handleAdd={handleAdd}
         />
         <List items={items} handleDelete={handleDelete} />
-
-      </div>
-
+      </InnerContainer>
+    </>
   );
 }
 export default Home;
